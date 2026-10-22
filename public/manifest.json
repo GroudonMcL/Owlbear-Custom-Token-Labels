@@ -1,0 +1,15 @@
+{
+  "name": "Token Label Styler",
+  "version": "1.0.0",
+  "manifest_version": 1,
+  "author": "GroudonMcL",
+  "description": "Restyle the native labels of every token in the current scene: font, size, colour, alignment and label padding.",
+  "icon": "/icon.svg",
+  "action": {
+    "title": "Token Label Styler",
+    "icon": "/icon.svg",
+    "popover": "/",
+    "width": 360,
+    "height": 640
+  }
+}

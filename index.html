@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Token Label Styler</title>
+  </head>
+  <body>
+    <main class="app">
+      <header class="app-header">
+        <h1>Token Label Styler</h1>
+      </header>
+
+      <section class="preview-section" aria-label="Preview">
+        <div class="preview-stage">
+          <div class="preview-token" aria-hidden="true"></div>
+          <div class="preview-label" id="preview-label">Goblin Warrior</div>
+        </div>
+        <p class="preview-caption">Preview only (approximate). The scene does not change until you apply.</p>
+      </section>
+
+      <form id="settings-form" class="settings" autocomplete="off">
+        <fieldset>
+          <legend>Typography</legend>
+
+          <label class="row" for="fontFamily">
+            <span>Font family</span>
+            <select id="fontFamily" name="fontFamily"></select>
+          </label>
+
+          <div class="row">
+            <label for="fontSize">Font size</label>
+            <div class="pair">
+              <input type="range" id="fontSize-range" data-mirror="fontSize" aria-label="Font size slider" />
+              <input type="number" id="fontSize" name="fontSize" />
+            </div>
+          </div>
+
+          <label class="row" for="fontWeight">
+            <span>Font weight</span>
+            <select id="fontWeight" name="fontWeight">
+              <option value="300">Light</option>
+              <option value="400">Regular</option>
+              <option value="500">Medium</option>
+              <option value="700">Bold</option>
+              <option value="900">Black</option>
+            </select>
+          </label>
+
+          <label class="row" for="fillColor">
+            <span>Text colour</span>
+            <input type="color" id="fillColor" name="fillColor" />
+          </label>
+
+          <div class="row">
+            <label for="fillOpacity">Text opacity</label>
+            <div class="pair">
+              <input type="range" id="fillOpacity" name="fillOpacity" />
+              <output for="fillOpacity" id="fillOpacity-out"></output>
+            </div>
+          </div>
+
+          <div class="row">
+            <span id="align-label">Text alignment</span>
+            <div class="segmented" role="radiogroup" aria-labelledby="align-label">
+              <label><input type="radio" name="textAlign" value="LEFT" /><span>Left</span></label>
+              <label><input type="radio" name="textAlign" value="CENTER" /><span>Centre</span></label>
+              <label><input type="radio" name="textAlign" value="RIGHT" /><span>Right</span></label>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Background spacing</legend>
+
+          <div class="row">
+            <label for="padding">Padding</label>
+            <div class="pair">
+              <input type="range" id="padding-range" data-mirror="padding" aria-label="Padding slider" />
+              <input type="number" id="padding" name="padding" />
+            </div>
+          </div>
+
+          <div class="row">
+            <label for="lineHeight">Line height</label>
+            <div class="pair">
+              <input type="range" id="lineHeight" name="lineHeight" />
+              <output for="lineHeight" id="lineHeight-out"></output>
+            </div>
+          </div>
+
+          <details class="note">
+            <summary>Why no background colour, opacity or corner radius?</summary>
+            <p>
+              Owlbear Rodeo's native token labels only expose text style
+              properties. Padding is a single value applied to every side, and
+              line height controls the vertical space around each line. Lower
+              values of both shrink the label background. Background colour,
+              opacity and corner radius are drawn by Owlbear Rodeo and cannot be
+              changed by extensions without replacing the label.
+            </p>
+          </details>
+        </fieldset>
+
+        <fieldset>
+          <legend>Apply to</legend>
+          <div class="checks">
+            <label><input type="checkbox" name="characters" /> Characters</label>
+            <label><input type="checkbox" name="mounts" /> Mounts</label>
+            <label><input type="checkbox" name="props" /> Props</label>
+          </div>
+        </fieldset>
+      </form>
+
+      <section class="actions" aria-label="Actions">
+        <p id="scene-status" class="scene-status"></p>
+        <button type="button" id="apply" class="primary">Apply to All Tokens</button>
+        <button type="button" id="reset" class="secondary">Reset Settings to Defaults</button>
+        <div id="result" class="result" role="status" aria-live="polite" hidden></div>
+      </section>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "name": "owlbear-token-label-styler",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Owlbear Rodeo extension that styles the native labels of every token in the current scene.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@owlbear-rodeo/sdk": "^3.1.0"
+  },
+  "devDependencies": {
+    "typescript": "~5.9",
+    "vite": "^8.3.5",
+    "vitest": "^5.0.5"
+  }
+}

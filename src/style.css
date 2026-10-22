@@ -1,0 +1,292 @@
+/* Colours default to Owlbear Rodeo's dark theme and are replaced at runtime
+   with the room's theme via OBR.theme (see applyTheme in ui.ts). */
+:root {
+  --bg: #222639;
+  --paper: #3d4051;
+  --text: #ffffff;
+  --text-muted: rgba(255, 255, 255, 0.7);
+  --primary: #bb99ff;
+  --primary-contrast: rgba(0, 0, 0, 0.87);
+  --border: rgba(255, 255, 255, 0.12);
+  --success: #66bb6a;
+  --warning: #ffa726;
+  --error: #f44336;
+  color-scheme: dark;
+}
+
+:root[data-mode="light"] {
+  --border: rgba(0, 0, 0, 0.12);
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  /* The popover supplies its own frame; keep the page transparent over it. */
+  background: transparent;
+  color: var(--text);
+  font-family: Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 14px;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px 16px 16px;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* Preview */
+.preview-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-height: 120px;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px dashed var(--border);
+  background:
+    repeating-conic-gradient(rgba(255, 255, 255, 0.04) 0% 25%, transparent 0% 50%) 0 0 / 24px 24px,
+    #4a5a3a;
+  overflow: hidden;
+}
+
+.preview-token {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #9fb4c7, #4b6177);
+  border: 3px solid #d9d2b6;
+}
+
+/* Approximation of Owlbear Rodeo's native label background. */
+.preview-label {
+  max-width: 100%;
+  min-width: 4em;
+  border-radius: 8px;
+  background: rgba(34, 38, 57, 0.8);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.preview-caption {
+  margin: 6px 0 0;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* Form */
+.settings {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+fieldset {
+  margin: 0;
+  padding: 8px 12px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--paper);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+legend {
+  padding: 0 4px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 7.5em 1fr;
+  align-items: center;
+  gap: 8px;
+}
+
+.pair {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pair input[type="range"] {
+  flex: 1;
+  min-width: 0;
+}
+
+.pair input[type="number"],
+.pair output {
+  width: 4.5em;
+  text-align: right;
+}
+
+select,
+input[type="number"] {
+  width: 100%;
+  padding: 4px 6px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+}
+
+input[type="color"] {
+  width: 48px;
+  height: 28px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: none;
+  cursor: pointer;
+}
+
+input[type="range"],
+input[type="checkbox"],
+input[type="radio"] {
+  accent-color: var(--primary);
+}
+
+.segmented {
+  display: flex;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.segmented label {
+  flex: 1;
+  position: relative;
+}
+
+.segmented input {
+  position: absolute;
+  opacity: 0;
+  inset: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+.segmented span {
+  display: block;
+  padding: 4px 0;
+  text-align: center;
+}
+
+.segmented input:checked + span {
+  background: var(--primary);
+  color: var(--primary-contrast);
+}
+
+.segmented input:focus-visible + span {
+  outline: 2px solid var(--primary);
+  outline-offset: -2px;
+}
+
+.checks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+}
+
+.note {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.note summary {
+  cursor: pointer;
+}
+
+.note p {
+  margin: 6px 0 0;
+  line-height: 1.4;
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.scene-status {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+button {
+  font: inherit;
+  border-radius: 20px;
+  padding: 8px 16px;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+button.primary {
+  background: var(--primary);
+  color: var(--primary-contrast);
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 10px 16px;
+}
+
+button.secondary {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--border);
+}
+
+.result {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border-left: 4px solid var(--text-muted);
+  background: var(--paper);
+  font-size: 0.85rem;
+}
+
+.result p {
+  margin: 0;
+}
+
+.result ul {
+  margin: 6px 0 0;
+  padding-left: 18px;
+}
+
+.result.success {
+  border-left-color: var(--success);
+}
+
+.result.warning {
+  border-left-color: var(--warning);
+}
+
+.result.error {
+  border-left-color: var(--error);
+}
