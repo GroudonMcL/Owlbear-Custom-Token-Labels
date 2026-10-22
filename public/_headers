@@ -1,0 +1,4 @@
+# Cloudflare Pages response headers.
+# Owlbear Rodeo fetches the manifest, icon and popover cross-origin.
+/*
+  Access-Control-Allow-Origin: *

@@ -70,6 +70,19 @@ npm run build
 # upload dist/ (contains index.html, manifest.json, icon.svg, assets/)
 ```
 
+### Cloudflare Pages
+
+`public/_headers` (copied into `dist/`) adds the CORS header Cloudflare Pages
+needs. In the Cloudflare dashboard, go to **Workers & Pages → Create → Pages →
+Connect to Git**, pick this repository, and use:
+
+- Framework preset: **None** (or Vite)
+- Build command: `npm run build`
+- Build output directory: `dist`
+
+Alternatively, deploy from your machine with
+`npm run build && npx wrangler pages deploy dist --project-name token-label-styler`.
+
 Users install it by adding `https://<your-host>/manifest.json` from their
 Owlbear Rodeo profile. To list it in the public Owlbear Rodeo extension
 store, follow Owlbear Rodeo's submission process in their extensions documentation.
