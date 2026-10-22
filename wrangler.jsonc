@@ -1,0 +1,9 @@
+// Cloudflare Workers static-assets deployment (`npx wrangler deploy`).
+// Serves the built site in dist/, including the CORS rules in dist/_headers.
+{
+  "name": "token-label-styler",
+  "compatibility_date": "2025-10-01",
+  "assets": {
+    "directory": "./dist"
+  }
+}
