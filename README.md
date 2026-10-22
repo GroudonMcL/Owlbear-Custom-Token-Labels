@@ -83,6 +83,14 @@ Connect to Git**, pick this repository, and use:
 Alternatively, deploy from your machine with
 `npm run build && npx wrangler pages deploy dist --project-name token-label-styler`.
 
+### Cloudflare Workers (static assets)
+
+If the dashboard puts you in the Workers flow instead of Pages,
+`wrangler.jsonc` configures a static-assets Worker that serves `dist/`
+(the `_headers` file applies there too). Use the Worker name
+`token-label-styler`, build command `npm run build`, and deploy command
+`npx wrangler deploy`. Or from your machine: `npm run build && npx wrangler deploy`.
+
 Users install it by adding `https://<your-host>/manifest.json` from their
 Owlbear Rodeo profile. To list it in the public Owlbear Rodeo extension
 store, follow Owlbear Rodeo's submission process in their extensions documentation.
